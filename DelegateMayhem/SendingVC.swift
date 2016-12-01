@@ -16,7 +16,7 @@ class SendingVC: UIViewController {
 
     @IBOutlet weak var dataEntryTextField: UITextField!
     
-    var delegate: DataSentDelegate?
+    var delegate: DataSentDelegate? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class SendingVC: UIViewController {
 
     @IBAction func sendBtnWasPressed(_ sender: Any) {
         if delegate != nil {
-            if dataEntryTextField != nil {
+            if !(dataEntryTextField.text?.isEmpty)! {
                 let data = dataEntryTextField.text
                 delegate?.userEnteredData(data: data!)
                 dismiss(animated: true, completion: nil)
