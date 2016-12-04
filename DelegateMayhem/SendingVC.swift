@@ -20,7 +20,9 @@ class SendingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
 
     @IBAction func sendBtnWasPressed(_ sender: Any) {
@@ -31,6 +33,11 @@ class SendingVC: UIViewController {
                 dismiss(animated: true, completion: nil)
             }
         }
+        hideKeyboard()
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
     }
 
 }
